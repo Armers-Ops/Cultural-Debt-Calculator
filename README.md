@@ -15,13 +15,13 @@ An interactive business intelligence tool built for VPs of Engineering and R&D t
 Once you create your GitHub account and activate GitHub Pages, your live URLs will be:
 
 **Calculator (embed on your website):**
-`https://Armers-ops.github.io/cultural-debt-calculator/cultural-debt-calculator.html`
+`https://culturaldebtcalculator.com/cultural-debt-calculator.html`
 
 **VP Summary Report (auto-opens after submission):**
-`https://Armers-ops.github.io/cultural-debt-calculator/cultural-debt-vp-summary.html`
+`https://culturaldebtcalculator.com/cultural-debt-vp-summary.html`
 
 **Consulting Brief (internal use only — do not share with clients):**
-`https://Armers-ops.github.io/cultural-debt-calculator/cultural-debt-armers-brief.html`
+`https://culturaldebtcalculator.com/cultural-debt-armers-brief.html`
 
 ---
 
@@ -66,10 +66,10 @@ Your proprietary framework ranked by organizational leverage:
 
 ## How to Update the File Image References After Creating Your Account
 
-Once you have your GitHub username, search for `Armers-ops` in all three HTML files and replace it with your GitHub username. This updates the logo image path.
+The logo image path references the GitHub raw content URL. If the repo is ever renamed or moved, update:
 
-Find: `raw.githubusercontent.com/Armers-ops/`
-Replace with: `raw.githubusercontent.com/[your-username]/`
+Find: `raw.githubusercontent.com/Armers-Ops/Cultural-Debt-Calculator/`
+Replace with: `raw.githubusercontent.com/[new-username]/[new-repo-name]/`
 
 ---
 
@@ -79,7 +79,7 @@ Paste this into any WordPress page using the Custom HTML block:
 
 ```html
 <iframe
-  src="https://Armers-ops.github.io/cultural-debt-calculator/cultural-debt-calculator.html"
+  src="https://culturaldebtcalculator.com/cultural-debt-calculator.html"
   width="100%"
   height="900px"
   frameborder="0"

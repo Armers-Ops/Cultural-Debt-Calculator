@@ -705,7 +705,7 @@
 <!-- Hero -->
 <div class="hero-bar">
   <div style="display:flex; justify-content:center; margin-bottom:28px;">
-    <img src="https://raw.githubusercontent.com/Armers-ops/cultural-debt-calculator/main/cscg-logo-transparent.png"
+    <img src="https://raw.githubusercontent.com/Armers-Ops/Cultural-Debt-Calculator/main/cscg-logo-transparent.png"
          alt="Culture Shift Consulting Group"
          style="height:120px; width:auto; display:block;"
          onerror="this.style.display='none'">
@@ -1096,13 +1096,13 @@
     const params = `?total=${total}&ic=${incivilCost}&cc=${challengerCost}&vc=${vagueCost}&ac=${attritionCost}&fc=${feedbackCost}&sc=${shadowCostVal}&ip=${incivilityPct}&cp=${challengerPct}&vp=${vaguePct}&lp=${latePct}&fp=${feedbackPct}&sp=${shadowPctVal}&avg=${avgPct.toFixed(3)}`;
 
     // Full report URL with numbers
-    const fullReportLink = 'https://armers-ops.github.io/Cultural-Debt-Calculator/cultural-debt-vp-summary.html' + params;
+    const fullReportLink = 'https://culturaldebtcalculator.com/cultural-debt-vp-summary.html' + params;
 
     // Open VP summary in new tab
     window.open(fullReportLink, '_blank');
 
     // Send email via EmailJS
-    const armersLink = 'https://armers-ops.github.io/Cultural-Debt-Calculator/cultural-debt-armers-brief.html' + params;
+    const armersLink = 'https://culturaldebtcalculator.com/cultural-debt-armers-brief.html' + params;
     emailjs.send('service_mefsi0n', 'fj6x3a8', {
       to_email:     email,
       report_link:  fullReportLink,
