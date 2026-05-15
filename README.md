@@ -6,22 +6,23 @@ cultureshiftconsultinggroup.com
 
 ## Overview
 
-An interactive business intelligence tool built for VPs of Engineering and R&D to quantify the annual operational cost of cultural debt across their engineering organization.
+An interactive business intelligence tool built for VPs of Engineering and R&D to quantify the annual operational cost of cultural debt across their engineering organization. Built and maintained by Norrils Signature Consulting Inc.
 
 ---
 
 ## Your Live Tool URLs
 
-Once you create your GitHub account and activate GitHub Pages, your live URLs will be:
+**Calculator:**
+`https://Armers-ops.github.io/cultural-debt-calculator/cultural-debt-calculator.html`
 
-**Calculator (embed on your website):**
-`https://culturaldebtcalculator.com/cultural-debt-calculator.html`
+**VP Summary Report:**
+`https://Armers-ops.github.io/cultural-debt-calculator/cultural-debt-vp-summary.html`
 
-**VP Summary Report (auto-opens after submission):**
-`https://culturaldebtcalculator.com/cultural-debt-vp-summary.html`
+**AI Debt Calculator (standalone — linked from VP Summary):**
+`https://Armers-ops.github.io/cultural-debt-calculator/ai-debt-calculator.html`
 
-**Consulting Brief (internal use only — do not share with clients):**
-`https://culturaldebtcalculator.com/cultural-debt-armers-brief.html`
+**Consulting Brief (internal use only):**
+`https://Armers-ops.github.io/cultural-debt-calculator/cultural-debt-armers-brief.html`
 
 ---
 
@@ -29,57 +30,111 @@ Once you create your GitHub account and activate GitHub Pages, your live URLs wi
 
 | File | Purpose |
 |---|---|
-| `cultural-debt-calculator.html` | Client-facing 3-step calculator — embed on your website |
-| `cultural-debt-vp-summary.html` | Executive summary — auto-opens with client's numbers after submission |
-| `cultural-debt-armers-brief.html` | Your internal consulting brief — talking points, mitigation plan, revenue opportunity |
-| `cscg-logo-transparent.png` | Culture Shift Consulting Group logo |
-| `index.html` | Redirects your base URL to the calculator |
+| `cultural-debt-calculator.html` | Client-facing 3-step calculator |
+| `cultural-debt-vp-summary.html` | Executive summary — auto-opens after submission |
+| `ai-debt-calculator.html` | Standalone AI Debt diagnostic — linked from VP Summary |
+| `cultural-debt-armers-brief.html` | Internal consulting brief — not for client distribution |
+| `cscg-logo-white-text.png` | Culture Shift Consulting Group logo — white text for dark backgrounds |
+| `index.html` | Redirects base URL to the calculator |
 | `README.md` | This file |
 
 ---
 
 ## The Six Cultural Debt Drivers
 
-Your proprietary framework ranked by organizational leverage:
-
-| Rank | Driver | Why It Ranks Here |
+| # | Driver | What It Measures |
 |---|---|---|
 | 1 | **Manager Capability Gap** | Root amplifier — creates and worsens all other debts |
-| 2 | **Voice Suppression** | Gateway debt — without addressing this, nothing else can be surfaced |
-| 3 | **Failure Punishment Reflex** | Kills innovation velocity — the debt technical teams feel most viscerally |
-| 4 | **Communication Lag & Feedback Debt** | Connective tissue — amplifies all drivers above |
-| 5 | **Brilliant Jerk Immunity** | Tolerated toxicity driving attrition and suppressing output |
-| 6 | **Shadow Management** | The closing argument — VP time and salary consumed by cultural friction |
+| 2 | **Psychological Safety Deficit** | Voice Suppression + Failure Punishment Reflex combined (15% overlap discount) |
+| 3 | **Decision Velocity Debt** | Cost of slow, unclear, or avoided decisions across engineering leadership |
+| 4 | **Cross-Functional Friction Debt** | Misalignment and communication breakdown between engineering and adjacent functions |
+| 5 | **Shadow Management** | VP time and salary consumed managing cultural friction instead of innovation |
+| 6 | **Brilliant Jerk Immunity** | Tolerated toxicity driving attrition and suppressing team output |
+
+---
+
+## Calculation Methodology
+
+### Base Variable
+```
+totalPayroll = employees × salary
+```
+
+### Driver Formulas
+
+**1. Manager Capability Gap**
+```
+employees × managerPct × salary × 0.34
+```
+Source: Gallup 2025 — disengagement costs 34% of salary per affected employee
+
+**2. Psychological Safety Deficit (Combined)**
+```
+rawVoiceCost   = employees × psychPct × salary × 0.19
+rawFailureCost = totalPayroll × psychPct × 0.20
+psychSafetyCost = (rawVoiceCost + rawFailureCost) × 0.85
+```
+0.85 discount eliminates the ~15% double-count on shared psychological safety root cause.
+Sources: Google Project Aristotle 2016; McKinsey 2022
+
+**3. Decision Velocity Debt**
+```
+totalPayroll × decisionPct × 0.15
+```
+Sources: McKinsey & Company, Reimagine Decision Making, 2020; McKinsey Global Tech Agenda, 2026
+
+**4. Cross-Functional Friction Debt**
+```
+totalPayroll × crossFuncPct × 0.22
+```
+Sources: Standish Group CHAOS Report, 2020; McKinsey Digital Transformation Research, 2023
+
+**5. Shadow Management — 3-Layer Formula**
+```
+Layer 1: $220,000 × shadowPct
+Layer 2: totalPayroll × 0.08 × shadowPct
+Layer 3: (employees ÷ 160,000,000) × $359,000,000,000 × shadowPct
+shadowCost = Layer1 + Layer2 + Layer3
+```
+VP salary basis: $220,000 midpoint — PayScale 2026 ($189,022), Indeed 2026 ($211,505), Salary.com 2025 ($244,877).
+Source: Harvard CEO Study 2018; CPP Inc./Myers-Briggs
+
+**6. Brilliant Jerk Immunity**
+```
+employees × brilliantJerkPct × salary × 0.22
+```
+Source: Dylan Minor HBS 2015; Christine Porath Georgetown 2022
 
 ---
 
 ## How the Tool Works
 
-1. VP completes the 3-step calculator — enters workforce inputs and adjusts 6 cultural debt sliders
-2. Results page displays their total Cultural Debt™ cost with a breakdown by driver
-3. VP enters their email and clicks **Get the Full Cultural Debt Report**
-4. Their personalized VP Summary Report opens automatically in a new tab
-5. A copy of the report is emailed to their inbox
-6. You receive a BCC copy of every submission automatically
+1. VP completes Step 1 — workforce inputs
+2. VP completes Step 2 — adjusts 6 cultural debt sliders
+3. Results page shows total Cultural Debt™ cost broken down across all 6 drivers
+4. VP enters email — VP Summary opens automatically in a new tab
+5. VP Summary shows cost breakdown with research citations
+6. VP clicks **Calculate AI Debt →** — passes headcount and salary to AI Debt Calculator
+7. Armers receives BCC of every submission at armers@csc-grp.com
 
 ---
 
-## How to Update the File Image References After Creating Your Account
+## EmailJS Configuration
 
-The logo image path references the GitHub raw content URL. If the repo is ever renamed or moved, update:
-
-Find: `raw.githubusercontent.com/Armers-Ops/Cultural-Debt-Calculator/`
-Replace with: `raw.githubusercontent.com/[new-username]/[new-repo-name]/`
+| Setting | Value |
+|---|---|
+| Public Key | `kTIzJ4hpEYE4LWi-w` |
+| Service ID | `service_mefsi0n` |
+| Template ID | `fj6x3a8` |
+| BCC | `armers@csc-grp.com` |
 
 ---
 
 ## WordPress Embed Code
 
-Paste this into any WordPress page using the Custom HTML block:
-
 ```html
 <iframe
-  src="https://culturaldebtcalculator.com/cultural-debt-calculator.html"
+  src="https://Armers-ops.github.io/cultural-debt-calculator/cultural-debt-calculator.html"
   width="100%"
   height="900px"
   frameborder="0"
@@ -90,40 +145,9 @@ Paste this into any WordPress page using the Custom HTML block:
 
 ---
 
-## EmailJS Setup (Required for Email Delivery)
-
-The calculator sends the VP Summary Report to clients via EmailJS. You will need to set up your own account:
-
-1. Go to **emailjs.com** and create a free account
-2. Click **Add New Service** → connect your Gmail or work email
-3. Click **Email Templates** → **Create New Template** using the Contact Us template
-4. Set the template body to include `{{report_link}}` and `{{to_email}}`
-5. Add your email to the **BCC** field so you receive every submission
-6. Copy your **Service ID**, **Template ID**, and **Public Key**
-7. Send those three values to your developer to update the calculator
-
----
-
-## Research Sources
-
-The calculation methodology is built on peer-reviewed and institutional research:
-
-- Gallup State of the Global Workplace 2025
-- Google Project Aristotle 2016
-- Amy Edmondson — The Fearless Organization, Harvard Business School
-- McKinsey Global Institute — Organizational Performance Research
-- Dylan Minor — Toxic Workers Study, Harvard Business School 2015
-- Christine Porath — Georgetown University Workplace Civility Studies 2022
-- Work Institute Retention Report 2020
-- Harvard CEO Study 2018
-- Accountemps Workplace Conflict Survey
-- DORA State of DevOps Report 2019
-
----
-
 ## Intellectual Property
 
-The Cultural Debt™ framework, Cultural Debt Index™, and all associated methodology are the sole and exclusive intellectual property of Armers Moncure and Culture Shift Consulting Group. This tool is proprietary and not for redistribution or white-labeling without written permission.
+Cultural Debt™ and Cultural Debt Index™ are the exclusive intellectual property of Armers Moncure and Culture Shift Consulting Group. Not for redistribution without written permission.
 
 ---
 

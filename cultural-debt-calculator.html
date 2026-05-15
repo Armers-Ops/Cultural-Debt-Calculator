@@ -38,21 +38,11 @@
 
   .hero-bar {
     background: var(--aqua-grad);
-    padding: 48px 24px 80px;
+    padding: 40px 24px 40px;
     text-align: center;
-    position: relative;
-    overflow: hidden;
   }
 
-  .hero-bar::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0; right: 0;
-    height: 60px;
-    background: var(--off-white);
-    clip-path: ellipse(55% 100% at 50% 100%);
-  }
+  .hero-bar::after { display: none; }
 
   .logo-row {
     display: flex;
@@ -90,7 +80,7 @@
 
   .hero-title {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(28px, 5vw, 48px);
+    font-size: clamp(22px, 3.5vw, 36px);
     font-weight: 700;
     color: var(--white);
     line-height: 1.1;
@@ -386,9 +376,51 @@
 
   .slider-hint {
     font-size: 11px;
-    color: var(--muted);
-    opacity: 0.7;
+    color: #0D2B6E;
+    font-style: italic;
+    opacity: 0.75;
+    margin-top: 4px;
   }
+
+  .dvd-q-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .dvd-q-row:last-of-type { border-bottom: none; }
+
+  .dvd-q-text {
+    font-size: 12px;
+    color: var(--navy);
+    line-height: 1.5;
+    flex: 1;
+  }
+
+  .dvd-q-toggle {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .dvd-btn {
+    padding: 5px 12px;
+    border-radius: 20px;
+    border: 1.5px solid var(--border);
+    background: var(--off-white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .dvd-btn.yes.sel { background: var(--teal); border-color: var(--teal); color: white; }
+  .dvd-btn.no.sel  { background: #c0392b; border-color: #c0392b; color: white; }
 
   /* Sections */
   .section { display: none; animation: fadeUp 0.35s ease; }
@@ -443,23 +475,24 @@
 
   /* Results */
   .result-hero {
-    background: var(--aqua-grad);
+    background: var(--white);
+    border: 1.5px solid #1A5CB8;
     border-radius: 14px;
-    padding: 40px 28px;
-    text-align: center;
-    margin-bottom: 24px;
-    position: relative;
     overflow: hidden;
+    margin-bottom: 24px;
   }
 
-  .result-hero::before {
-    content: '';
-    position: absolute;
-    top: -30px; right: -30px;
-    width: 150px; height: 150px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.08);
-    pointer-events: none;
+  .result-hero::before { display: none; }
+
+  .result-hero-header {
+    background: linear-gradient(135deg, #091E42 0%, #0D2B6E 25%, #1A5CB8 55%, #00B4A6 80%, #5BC8C0 100%);
+    padding: 20px 28px;
+    text-align: center;
+  }
+
+  .result-hero-body {
+    padding: 20px 28px;
+    text-align: center;
   }
 
   .result-eyebrow {
@@ -467,22 +500,22 @@
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: rgba(255,255,255,0.75);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 
   .result-amount {
     font-family: 'Playfair Display', serif;
     font-size: clamp(44px, 12vw, 76px);
     font-weight: 700;
-    color: var(--white);
+    color: var(--navy);
     line-height: 1;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     letter-spacing: -0.02em;
   }
 
   .result-note {
-    font-size: 13px;
-    color: rgba(255,255,255,0.85);
+    font-size: 12px;
+    color: var(--muted);
     max-width: 420px;
     margin: 0 auto;
     line-height: 1.6;
@@ -500,7 +533,7 @@
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--white);
-    margin-bottom: 14px;
+    margin-bottom: 10px;
   }
 
   /* Breakdown */
@@ -515,27 +548,22 @@
 
   .bc {
     background: var(--off-white);
-    border: 2px solid #0D2B6E;
-    border-top: 4px solid #091E42;
+    border: 1.5px solid #1A5CB8;
     border-radius: 10px;
     padding: 18px 16px;
   }
 
   .bc-label {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
   }
 
   .bc-sublabel {
-    font-size: 10px;
-    color: var(--teal-dark);
-    font-style: italic;
+    font-size: 11px;
+    color: var(--muted);
     margin-bottom: 8px;
-    opacity: 0.8;
   }
 
   .bc-amount {
@@ -556,7 +584,7 @@
   .severity-bar {
     margin: 20px 0;
     background: var(--off-white);
-    border: 1.5px solid #e2f0f2;
+    border: 1.5px solid #1A5CB8;
     border-radius: 10px;
     padding: 18px 20px;
   }
@@ -590,66 +618,85 @@
     justify-content: space-between;
     font-size: 10px;
     color: var(--muted);
+    margin-bottom: 10px;
   }
 
-  .severity-tier {
-    font-family: 'Playfair Display', serif;
-    font-size: 16px;
+  .severity-tier-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .severity-tier-label {
+    font-size: 13px;
     font-weight: 600;
     color: var(--navy);
-    margin-top: 8px;
   }
+
+  .severity-tier-badge {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+
+  .tier-managed  { background: rgba(62,207,122,0.12); color: #1a8c45; border: 1.5px solid #3ecf7a; }
+  .tier-moderate { background: rgba(244,162,97,0.12);  color: #b56a10; border: 1.5px solid #f4a261; }
+  .tier-severe   { background: rgba(200,50,50,0.10);   color: #b02020; border: 1.5px solid #cc3333; }
+  .tier-critical { background: rgba(160,0,0,0.10);     color: #8b0000; border: 1.5px solid #aa0000; }
 
   /* CTA */
   .cta-card {
-    background: linear-gradient(135deg, #5de0d8 0%, #2db8c5 40%, #1a7fa8 100%);
+    background: var(--white);
+    border: 1.5px solid #1A5CB8;
     border-radius: 14px;
-    padding: 28px 24px;
-    text-align: center;
+    overflow: hidden;
     margin-bottom: 20px;
   }
 
-  .cta-card h3 {
+  .cta-card-header {
+    background: linear-gradient(135deg, #091E42 0%, #0D2B6E 25%, #1A5CB8 55%, #00B4A6 80%, #5BC8C0 100%);
+    padding: 16px 24px;
+  }
+
+  .cta-card-header h3 {
     font-family: 'Playfair Display', serif;
     font-size: 20px;
     color: var(--white);
-    margin-bottom: 8px;
+    margin-bottom: 4px;
   }
 
-  .cta-card p {
+  .cta-card-header p {
     font-size: 13px;
-    color: rgba(255,255,255,0.6);
-    margin-bottom: 20px;
+    color: rgba(255,255,255,0.85);
     line-height: 1.6;
+    margin: 0;
   }
 
-  .email-row {
-    display: flex;
-    gap: 10px;
-    max-width: 440px;
-    margin: 0 auto;
+  .cta-card-body {
+    padding: 20px 24px;
   }
 
-  .email-row input {
-    flex: 1;
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
-    color: var(--white);
-    padding: 12px 14px;
-    font-size: 14px;
+  .cta-input {
+    width: 100%;
+    border: 1.5px solid #1A5CB8;
     border-radius: 8px;
-  }
-
-  .email-row input::placeholder { color: rgba(255,255,255,0.4); }
-
-  .email-row input:focus {
-    border-color: var(--teal);
-    box-shadow: 0 0 0 3px rgba(46,196,182,0.2);
-    background: rgba(255,255,255,0.15);
+    padding: 11px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--navy);
+    background: var(--off-white);
     outline: none;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
   }
 
-  .email-row .btn-primary { max-width: none; margin-left: 0; flex-shrink: 0; }
+  .cta-input:focus { border-color: #091E42; background: white; }
+  .cta-input::placeholder { color: var(--muted); }
 
   .reset-link {
     display: block;
@@ -704,12 +751,10 @@
 
 <!-- Hero -->
 <div class="hero-bar">
-  <div style="display:flex; justify-content:center; margin-bottom:28px;">
-    <img src="https://raw.githubusercontent.com/Armers-Ops/Cultural-Debt-Calculator/main/cscg-logo-transparent.png"
-         alt="Culture Shift Consulting Group"
-         style="height:120px; width:auto; display:block;"
-         onerror="this.style.display='none'">
-  </div>
+  <img src="./cscg-logo-white-text.png"
+       alt="Culture Shift Consulting Group"
+       style="height:clamp(50px,8vw,100px); width:auto; max-width:90%; display:block; margin:0 auto 16px;"
+       onerror="this.style.display='none'">
   <div class="hero-title">CULTURAL DEBT CALCULATOR</div>
   <div class="hero-title-sub">What Is Organizational Friction<br><em>Costing Your Team?</em></div>
   <p class="hero-sub">Built for VPs of R&amp;D and Engineering. Quantify the real Hidden Overhead across your engineering organization — in under 3 minutes.</p>
@@ -729,7 +774,7 @@
     <div class="section active" id="section1">
       <div class="step-label">Step 1 of 2 — Your Organization</div>
       <div class="card-title">Your Engineering Organization</div>
-      <p class="card-desc">Enter your workforce basics. We use these to calculate the dollar value of what incivility is consuming across your teams.</p>
+      <p class="card-desc">Enter your workforce basics. We use these to calculate the dollar value of organizational friction across your teams.</p>
 
       <div class="grid-2">
         <div class="input-group">
@@ -742,7 +787,7 @@
           <label>Avg Annual Compensation <sub>per person</sub></label>
           <div class="input-wrap has-prefix">
             <span class="prefix">$</span>
-            <input type="number" id="salary" placeholder="e.g. 145,000" min="1"/>
+            <input type="number" id="salary" placeholder="e.g. 145000" min="1"/>
           </div>
         </div>
       </div>
@@ -784,9 +829,9 @@
     <div class="section" id="section2">
       <div class="step-label">Step 2 of 2 — Cultural Debt Factors</div>
       <div class="card-title">Where Is Cultural Debt Accumulating?</div>
-      <p class="card-desc">Adjust each slider to reflect your organization's current reality. Research-based defaults are pre-loaded — move them to match your environment.</p>
+      <p class="card-desc">Adjust each slider to reflect your organization's current reality. Each category shows the research sources behind the default percentage.</p>
 
-      <!-- Slider 1 -->
+      <!-- Slider 1 — Manager Capability Gap -->
       <div class="slider-block">
         <div class="slider-top">
           <div class="slider-name-wrap">
@@ -796,62 +841,49 @@
           <span class="slider-pct" id="incivilityVal">40%</span>
         </div>
         <input type="range" id="incivilityPct" min="0" max="80" value="40" oninput="updateSlider('incivilityPct','incivilityVal')">
-        <div class="slider-hint">% of managers below capability threshold — Gallup 2025: 70% of engagement variance from manager; disengagement costs 34% of salary; manager engagement dropped to 22% in 2025</div>
+        <div class="slider-hint">Gallup State of the American Manager, 2015 · Gallup State of the Global Workplace, 2025</div>
       </div>
 
-      <!-- Slider 2 -->
+      <!-- Slider 2 — Psychological Safety Deficit -->
       <div class="slider-block">
         <div class="slider-top">
           <div class="slider-name-wrap">
-            <span class="slider-name">Voice Suppression</span>
-            <span class="slider-sublabel">Engineers and Developers unable to surface concerns, ideas, or blockers safely</span>
+            <span class="slider-name">Psychological Safety Deficit</span>
+            <span class="slider-sublabel">Voice suppression and failure punishment reflex — combined cost of self-censorship and punitive culture</span>
           </div>
-          <span class="slider-pct" id="microtoxVal">42%</span>
+          <span class="slider-pct" id="psychVal">40%</span>
         </div>
-        <input type="range" id="microtoxPct" min="0" max="80" value="42" oninput="updateSlider('microtoxPct','microtoxVal')">
-        <div class="slider-hint">% of technical staff who self-censor — Google Project Aristotle 2016: psych safety = #1 team performance driver; Amy Edmondson (HBS): teams with voice suppression lose 12–19% innovation output</div>
+        <input type="range" id="psychPct" min="0" max="80" value="40" oninput="updateSlider('psychPct','psychVal')">
+        <div class="slider-hint">Google Project Aristotle, 2016 · McKinsey Global Institute, 2022</div>
       </div>
 
-      <!-- Slider 3 -->
+      <!-- Slider 3 — Decision Velocity Debt -->
       <div class="slider-block">
         <div class="slider-top">
           <div class="slider-name-wrap">
-            <span class="slider-name">Failure Punishment Reflex</span>
-            <span class="slider-sublabel">Teams penalized for failure rather than supported through learning and iteration</span>
+            <span class="slider-name">Decision Velocity Debt</span>
+            <span class="slider-sublabel">Cost of slow, unclear, or avoided decisions across engineering leadership — engineers waiting instead of building</span>
           </div>
-          <span class="slider-pct" id="challengerVal">38%</span>
+          <span class="slider-pct" id="decisionVal">38%</span>
         </div>
-        <input type="range" id="challengerPct" min="0" max="80" value="38" oninput="updateSlider('challengerPct','challengerVal')">
-        <div class="slider-hint">% of teams under punitive failure culture — McKinsey Global Institute: punitive cultures lose 20–30% of potential productivity; Edmondson (HBS) Right Kind of Wrong 2023: failure safety = innovation predictor</div>
+        <input type="range" id="decisionPct" min="0" max="80" value="38" oninput="updateSlider('decisionPct','decisionVal')">
+        <div class="slider-hint">McKinsey & Company, Reimagine Decision Making, 2020 · McKinsey Global Tech Agenda, 2026</div>
       </div>
 
-      <!-- Slider 4 -->
+      <!-- Slider 4 — Cross-Functional Friction Debt -->
       <div class="slider-block">
         <div class="slider-top">
           <div class="slider-name-wrap">
-            <span class="slider-name">Communication Lag & Feedback Debt</span>
-            <span class="slider-sublabel">Chronic delays and gaps in clarity, timeliness, and quality of feedback across all levels</span>
+            <span class="slider-name">Cross-Functional Friction Debt</span>
+            <span class="slider-sublabel">Cost of misalignment and communication breakdown between engineering and adjacent functions</span>
           </div>
-          <span class="slider-pct" id="vagueFeedbackVal">45%</span>
+          <span class="slider-pct" id="crossFuncVal">42%</span>
         </div>
-        <input type="range" id="vagueFeedbackPct" min="0" max="80" value="45" oninput="updateSlider('vagueFeedbackPct','vagueFeedbackVal')">
-        <div class="slider-hint">% of feedback interactions failing in clarity or timing — Work Institute 2020: 77% of turnover preventable; Kim Scott Radical Candor 2017: feedback lag primary driver of avoidable attrition</div>
+        <input type="range" id="crossFuncPct" min="0" max="80" value="42" oninput="updateSlider('crossFuncPct','crossFuncVal')">
+        <div class="slider-hint">Standish Group CHAOS Report, 2020 · McKinsey Digital Transformation Research, 2023</div>
       </div>
 
-      <!-- Slider 5 -->
-      <div class="slider-block">
-        <div class="slider-top">
-          <div class="slider-name-wrap">
-            <span class="slider-name">Brilliant Jerk Immunity</span>
-            <span class="slider-sublabel">High performers tolerated despite toxic behavior — tolerated toxicity damaging team culture and output</span>
-          </div>
-          <span class="slider-pct" id="lateFeeedbackVal">54%</span>
-        </div>
-        <input type="range" id="lateFeedbackPct" min="0" max="80" value="54" oninput="updateSlider('lateFeedbackPct','lateFeeedbackVal')">
-        <div class="slider-hint">% of orgs tolerating high performer toxic behavior — HBS Dylan Minor 2015: toxic employee costs 2× a superstar hire; Porath (Georgetown): de-energizing relationships 4–7× stronger negative impact than positive ones</div>
-      </div>
-
-      <!-- Slider 6 -->
+      <!-- Slider 5 — Shadow Management -->
       <div class="slider-block">
         <div class="slider-top">
           <div class="slider-name-wrap">
@@ -861,7 +893,20 @@
           <span class="slider-pct" id="shadowVal">35%</span>
         </div>
         <input type="range" id="shadowPct" min="0" max="80" value="35" oninput="updateSlider('shadowPct','shadowVal')">
-        <div class="slider-hint">Harvard CEO Study 2018: 36% of leader time in reactive mode; Accountemps: managers spend 18% of time on conflict — over 7 hrs/week; total VP impact = 8.7× their annual compensation (HBS)</div>
+        <div class="slider-hint">Harvard CEO Study, 2018 · PayScale 2026 ($189,022) · Indeed 2026 ($211,505) · Salary.com 2025 ($244,877) — $220K defensible midpoint used</div>
+      </div>
+
+      <!-- Slider 6 — Brilliant Jerk Immunity -->
+      <div class="slider-block">
+        <div class="slider-top">
+          <div class="slider-name-wrap">
+            <span class="slider-name">Brilliant Jerk Immunity</span>
+            <span class="slider-sublabel">High performers tolerated despite toxic behavior — damaging team culture and output</span>
+          </div>
+          <span class="slider-pct" id="lateFeeedbackVal">54%</span>
+        </div>
+        <input type="range" id="lateFeedbackPct" min="0" max="80" value="54" oninput="updateSlider('lateFeedbackPct','lateFeeedbackVal')">
+        <div class="slider-hint">Dylan Minor, Harvard Business School Toxic Workers Study, 2015 · Christine Porath, Georgetown University, 2022</div>
       </div>
 
       <div class="nav">
@@ -875,10 +920,14 @@
       <div class="step-label">Your Cultural Debt Report</div>
 
       <div class="result-hero">
-        <div class="debt-badge">Cultural Debt™</div>
-        <div class="result-eyebrow">Estimated Annual Cultural Debt Cost</div>
-        <div class="result-amount" id="totalCost">$0</div>
-        <div class="result-note">This is what accumulated cultural debt is costing your engineering organization every year — across management gaps, tolerated toxicity, voice suppression, punitive culture, broken feedback loops, and shadow management.</div>
+        <div class="result-hero-header">
+          <div class="debt-badge">Cultural Debt™</div>
+          <div class="result-eyebrow">Estimated Annual Cultural Debt Cost</div>
+          <div class="result-amount" id="totalCost">$0</div>
+        </div>
+        <div class="result-hero-body">
+          <div class="result-note">This is what accumulated cultural debt is costing your engineering organization every year — across management gaps, psychological safety deficits, decision friction, cross-functional misalignment, tolerated toxicity, and shadow management.</div>
+        </div>
       </div>
 
       <!-- Severity bar -->
@@ -893,7 +942,10 @@
           <span>Severe</span>
           <span>Critical</span>
         </div>
-        <div class="severity-tier" id="severityTier">—</div>
+        <div class="severity-tier-row">
+          <span class="severity-tier-label">Significant Operational Impact:</span>
+          <span class="severity-tier-badge tier-severe" id="severityTier">—</span>
+        </div>
       </div>
 
       <div class="card-title" style="margin-bottom:14px;">Cost Breakdown by Debt Driver</div>
@@ -905,22 +957,22 @@
           <div class="bc-desc">Cost of underperforming managers across productivity, attrition, and team output</div>
         </div>
         <div class="bc">
-          <div class="bc-label">Voice Suppression</div>
-          <div class="bc-sublabel">Innovation & Safety Cost</div>
-          <div class="bc-amount" id="challengerCost">—</div>
-          <div class="bc-desc">Cost of unreported bugs, withheld ideas, and unaddressed blockers</div>
+          <div class="bc-label">Psychological Safety Deficit</div>
+          <div class="bc-sublabel">Voice Suppression + Failure Punishment Reflex</div>
+          <div class="bc-amount" id="psychSafetyCostDisplay">—</div>
+          <div class="bc-desc">Combined cost of self-censorship and punitive failure culture — 15% overlap discount applied</div>
         </div>
         <div class="bc">
-          <div class="bc-label">Failure Punishment Reflex</div>
-          <div class="bc-sublabel">Velocity & Innovation Cost</div>
-          <div class="bc-amount" id="vagueCost">—</div>
-          <div class="bc-desc">Innovation suppression and talent loss driven by punitive failure culture</div>
+          <div class="bc-label">Decision Velocity Debt</div>
+          <div class="bc-sublabel">Organizational Speed & Delivery Cost</div>
+          <div class="bc-amount" id="decisionCostDisplay">—</div>
+          <div class="bc-desc">Cost of slow, unclear, or avoided decisions — engineers waiting instead of building</div>
         </div>
         <div class="bc">
-          <div class="bc-label">Communication Lag & Feedback Debt</div>
-          <div class="bc-sublabel">Rework & Attrition Cost</div>
-          <div class="bc-amount" id="attritionCost">—</div>
-          <div class="bc-desc">Cost of chronic gaps in clarity, timeliness, and quality of feedback</div>
+          <div class="bc-label">Cross-Functional Friction Debt</div>
+          <div class="bc-sublabel">Misalignment & Rework Cost</div>
+          <div class="bc-amount" id="crossFuncCostDisplay">—</div>
+          <div class="bc-desc">Cost of misalignment and communication breakdown between engineering and adjacent functions</div>
         </div>
         <div class="bc">
           <div class="bc-label">Brilliant Jerk Immunity</div>
@@ -932,16 +984,28 @@
           <div class="bc-label">Shadow Management</div>
           <div class="bc-sublabel">Leadership Time & Strategy Cost</div>
           <div class="bc-amount" id="shadowCostDisplay">—</div>
-          <div class="bc-desc">VP salary waste + 8% org productivity erosion + conflict cost. Research: $90K–$144K direct loss per VP annually; total leader impact = 8.7× their compensation</div>
+          <div class="bc-desc">VP salary waste + 8% org productivity erosion + conflict cost attribution</div>
         </div>
       </div>
 
       <div class="cta-card">
-        <h3>Get the Full Cultural Debt Report</h3>
-        <p>Receive a detailed breakdown by team type and the recommended next step — delivered to your inbox.</p>
-        <div class="email-row">
-          <input type="text" id="emailInput" placeholder="Your work email"/>
-          <button class="btn btn-primary" onclick="sendReport()">Send My Report</button>
+        <div class="cta-card-header">
+          <h3>Get the Full Cultural Debt Report</h3>
+          <p>Receive a detailed breakdown by team type and the recommended next step — delivered to your inbox.</p>
+        </div>
+        <div class="cta-card-body">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+            <input type="text" id="firstNameInput" class="cta-input" placeholder="First Name" style="margin-bottom:0;">
+            <input type="text" id="lastNameInput" class="cta-input" placeholder="Last Name" style="margin-bottom:0;">
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+            <input type="text" id="companyInput" class="cta-input" placeholder="Company Name" style="margin-bottom:0;">
+            <input type="text" id="titleInput" class="cta-input" placeholder="Your Title" style="margin-bottom:0;">
+          </div>
+          <div style="display:flex;gap:10px;">
+            <input type="text" id="emailInput" class="cta-input" placeholder="Your work email" style="margin-bottom:0;flex:1;">
+            <button class="btn btn-primary" onclick="sendReport()" style="flex-shrink:0;margin-left:0;max-width:none;">Send My Report</button>
+          </div>
         </div>
       </div>
 
@@ -989,12 +1053,12 @@
     const employees       = parseFloat(document.getElementById('employees').value) || 0;
     const salary          = parseFloat(document.getElementById('salary').value) || 0;
     const replacePct      = parseFloat(document.getElementById('replacePct').value) || 150;
-    const incivilityPct   = parseFloat(document.getElementById('incivilityPct').value) / 100;  // Manager Capability Gap
-    const microtoxPct     = parseFloat(document.getElementById('microtoxPct').value) / 100;    // Voice Suppression
-    const challengerPct   = parseFloat(document.getElementById('challengerPct').value) / 100;  // Failure Punishment Reflex
-    const vaguePct        = parseFloat(document.getElementById('vagueFeedbackPct').value) / 100; // Communication & Feedback Debt
-    const latePct         = parseFloat(document.getElementById('lateFeedbackPct').value) / 100;  // Brilliant Jerk Immunity
-    const shadowPct       = parseFloat(document.getElementById('shadowPct').value) / 100;        // Shadow Management
+    const incivilityPct  = parseFloat(document.getElementById('incivilityPct').value) / 100;  // Manager Capability Gap
+    const psychPct       = parseFloat(document.getElementById('psychPct').value) / 100;        // Psychological Safety Deficit
+    const decisionPct    = parseFloat(document.getElementById('decisionPct').value) / 100;     // Decision Velocity Debt
+    const crossFuncPct   = parseFloat(document.getElementById('crossFuncPct').value) / 100;    // Cross-Functional Friction Debt
+    const shadowPct      = parseFloat(document.getElementById('shadowPct').value) / 100;       // Shadow Management
+    const latePct        = parseFloat(document.getElementById('lateFeedbackPct').value) / 100; // Brilliant Jerk Immunity
 
     if (!employees || !salary) {
       alert('Please complete your organization inputs first.');
@@ -1004,164 +1068,157 @@
 
     const totalPayroll = employees * salary;
 
-    // 1. Manager Capability Gap
-    // Gallup 2025: 70% of engagement variance from manager; disengagement costs 34% of salary
-    // % of managers underperforming × all employees affected × 34% salary loss
-    const incivilCost = employees * incivilityPct * salary * 0.34;
+    // 1. Manager Capability Gap — Gallup 2025: 0.34 base + 4% Communication Lag absorption = 0.3536
+    const incivilCost = employees * incivilityPct * salary * 0.3536;
 
-    // 2. Voice Suppression
-    // Google Project Aristotle: low psych safety = 19% productivity loss
-    // Amy Edmondson: teams without voice suppression 12-19% more innovative
-    const challengerCost = employees * microtoxPct * salary * 0.19;
+    // 2. Psychological Safety Deficit — 0.85 overlap discount applied
+    // Pre-discount multipliers boosted +2% to absorb Communication Lag undelivered honest feedback
+    // Voice: 0.19 × 1.02 = 0.1938 | Failure: 0.20 × 1.02 = 0.2040
+    const rawVoiceCost    = employees * psychPct * salary * 0.1938;
+    const rawFailureCost  = totalPayroll * psychPct * 0.2040;
+    const psychSafetyCost = (rawVoiceCost + rawFailureCost) * 0.85;
 
-    // 3. Failure Punishment Reflex
-    // McKinsey: punitive cultures lose 20-30% of potential productivity
-    // Using conservative 20% of affected team payroll
-    const vagueCost = totalPayroll * challengerPct * 0.20;
+    // 3. Decision Velocity Debt — 0.15 base + 2% Communication Lag absorption = 0.1530
+    const decisionCost = totalPayroll * decisionPct * 0.1530;
 
-    // 4. Communication Lag & Feedback Debt
-    // Work Institute 2020: 77% of turnover preventable; poor feedback = primary driver
-    // Replacement cost 1.5-2x salary; using 1.5x for conservative estimate
-    const atRiskStaff = employees * vaguePct * 0.20;
-    const attritionCost = atRiskStaff * salary * (replacePct / 100);
+    // 4. Cross-Functional Friction Debt — 0.22 base + 2.5% Communication Lag absorption = 0.2255
+    const crossFuncCost = totalPayroll * crossFuncPct * 0.2255;
 
-    // 5. Brilliant Jerk Immunity
-    // HBS Dylan Minor 2015: toxic employee costs 2x the value of a superstar hire
-    // Porath: de-energizing relationships 4-7x stronger negative impact
+    // 5. Shadow Management — 3-layer formula
+    const vpCompEstimate         = 220000;
+    const shadowDirectCost       = vpCompEstimate * shadowPct;
+    const shadowProductivityLoss = totalPayroll * 0.08;
+    const shadowConflictCost     = (employees / 160000000) * 359000000000 * shadowPct;
+    const shadowCost             = shadowDirectCost + (shadowProductivityLoss * shadowPct) + shadowConflictCost;
+
+    // 6. Brilliant Jerk Immunity — HBS Dylan Minor 2015: 22% output drag
     const feedbackCost = employees * latePct * salary * 0.22;
 
-    // 6. Shadow Management — three-layer research-based calculation
-    // Layer 1: Direct VP salary sunk cost (Harvard CEO study: 36-42% time in reactive mode)
-    const vpCompEstimate = 280000;
-    const shadowDirectCost = vpCompEstimate * shadowPct;
-    // Layer 2: Org-wide productivity erosion (research: 7-9% productivity decrease)
-    const shadowProductivityLoss = totalPayroll * 0.08;
-    // Layer 3: Conflict cost attribution ($359B annual U.S. conflict cost, prorated by org size)
-    const shadowConflictCost = (employees / 160000000) * 359000000000 * shadowPct;
-    const shadowCost = shadowDirectCost + (shadowProductivityLoss * shadowPct) + shadowConflictCost;
-
-    const total = incivilCost + challengerCost + vagueCost + attritionCost + feedbackCost + shadowCost;
+    const total = incivilCost + psychSafetyCost + decisionCost + crossFuncCost + shadowCost + feedbackCost;
 
     document.getElementById('totalCost').textContent           = fmt(total);
     document.getElementById('incivilCost').textContent         = fmt(incivilCost);
-    document.getElementById('challengerCost').textContent      = fmt(challengerCost);
-    document.getElementById('vagueCost').textContent           = fmt(vagueCost);
-    document.getElementById('attritionCost').textContent       = fmt(attritionCost);
-    document.getElementById('feedbackCostDisplay').textContent = fmt(feedbackCost);
+    document.getElementById('psychSafetyCostDisplay').textContent = fmt(psychSafetyCost);
+    document.getElementById('decisionCostDisplay').textContent = fmt(decisionCost);
+    document.getElementById('crossFuncCostDisplay').textContent = fmt(crossFuncCost);
     document.getElementById('shadowCostDisplay').textContent   = fmt(shadowCost);
+    document.getElementById('feedbackCostDisplay').textContent = fmt(feedbackCost);
+    window._psychSafety  = psychSafetyCost;
+    window._decisionCost = decisionCost;
+    window._crossFunc    = crossFuncCost;
     window._feedbackCost = feedbackCost;
     window._shadowCost   = shadowCost;
 
-    // Severity scoring
-    const avgPct = (incivilityPct + microtoxPct + challengerPct + vaguePct + latePct + shadowPct) / 6;
+    const avgPct = (incivilityPct + psychPct + decisionPct + crossFuncPct + shadowPct + latePct) / 6;
     const severityPct = Math.min(avgPct * 200, 100);
     document.getElementById('severityFill').style.width = severityPct + '%';
 
-    let tier = '';
-    if (avgPct < 0.20)      tier = 'Managed — Early intervention recommended';
-    else if (avgPct < 0.35) tier = 'Moderate — Cultural debt is accumulating';
-    else if (avgPct < 0.50) tier = 'Severe — Significant operational impact underway';
-    else                     tier = 'Critical — Immediate culture intervention required';
+    let tierWord = '';
+    let tierClass = '';
+    if (avgPct < 0.20)      { tierWord = 'Managed';  tierClass = 'tier-managed'; }
+    else if (avgPct < 0.35) { tierWord = 'Moderate'; tierClass = 'tier-moderate'; }
+    else if (avgPct < 0.50) { tierWord = 'Severe';   tierClass = 'tier-severe'; }
+    else                     { tierWord = 'Critical'; tierClass = 'tier-critical'; }
 
-    document.getElementById('severityTier').textContent = tier;
+    const tierEl = document.getElementById('severityTier');
+    tierEl.textContent = tierWord;
+    tierEl.className = 'severity-tier-badge ' + tierClass;
 
     goTo(3);
   }
 
   function sendReport() {
-    const email = document.getElementById('emailInput').value.trim();
-    if (!email || !email.includes('@')) {
-      alert('Please enter a valid email address.');
-      return;
-    }
+    const email      = document.getElementById('emailInput').value.trim();
+    const firstName  = document.getElementById('firstNameInput').value.trim();
+    const lastName   = document.getElementById('lastNameInput').value.trim();
+    const company    = document.getElementById('companyInput').value.trim();
+    const title      = document.getElementById('titleInput').value.trim();
 
-    // Build URL params so numbers pass directly into both reports
-    const total          = document.getElementById('totalCost').textContent.replace(/[$,]/g,'');
-    const incivilCost    = document.getElementById('incivilCost').textContent.replace(/[$,]/g,'');
-    const challengerCost = document.getElementById('challengerCost').textContent.replace(/[$,]/g,'');
-    const vagueCost      = document.getElementById('vagueCost').textContent.replace(/[$,]/g,'');
-    const attritionCost  = document.getElementById('attritionCost').textContent.replace(/[$,]/g,'');
+    if (!firstName || !lastName) { alert('Please enter your first and last name.'); return; }
+    if (!company) { alert('Please enter your company name.'); return; }
+    if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
+
+    const employees      = document.getElementById('employees').value || '—';
+    const salary         = document.getElementById('salary').value || '—';
     const incivilityPct  = document.getElementById('incivilityPct').value;
-    const challengerPct  = document.getElementById('challengerPct').value;
-    const vaguePct       = document.getElementById('vagueFeedbackPct').value;
+    const psychPctVal    = document.getElementById('psychPct').value;
+    const decisionPctVal = document.getElementById('decisionPct').value;
+    const crossFuncPctVal= document.getElementById('crossFuncPct').value;
+    const shadowPctVal   = document.getElementById('shadowPct').value;
     const latePct        = document.getElementById('lateFeedbackPct').value;
-    const microtoxPct    = document.getElementById('microtoxPct').value;
-    const avgPct         = (parseFloat(incivilityPct)+parseFloat(microtoxPct)+parseFloat(challengerPct)+parseFloat(vaguePct)+parseFloat(latePct))/500;
 
-    const feedbackCost  = Math.round(window._feedbackCost || 0);
-    const feedbackPct   = document.getElementById('lateFeedbackPct').value;
-    const shadowCostVal = Math.round(window._shadowCost || 0);
-    const shadowPctVal  = document.getElementById('shadowPct').value;
+    const total           = document.getElementById('totalCost').textContent.replace(/[$,]/g,'');
+    const incivilCost     = document.getElementById('incivilCost').textContent.replace(/[$,]/g,'');
+    const psychSafetyVal  = Math.round(window._psychSafety || 0);
+    const decisionCostVal = Math.round(window._decisionCost || 0);
+    const crossFuncVal    = Math.round(window._crossFunc || 0);
+    const feedbackCostVal = Math.round(window._feedbackCost || 0);
+    const shadowCostVal   = Math.round(window._shadowCost || 0);
 
-    const params = `?total=${total}&ic=${incivilCost}&cc=${challengerCost}&vc=${vagueCost}&ac=${attritionCost}&fc=${feedbackCost}&sc=${shadowCostVal}&ip=${incivilityPct}&cp=${challengerPct}&vp=${vaguePct}&lp=${latePct}&fp=${feedbackPct}&sp=${shadowPctVal}&avg=${avgPct.toFixed(3)}`;
+    const avgPct = (parseFloat(incivilityPct)+parseFloat(psychPctVal)+parseFloat(decisionPctVal)+parseFloat(crossFuncPctVal)+parseFloat(shadowPctVal)+parseFloat(latePct))/600;
+    const params = `?total=${total}&ic=${incivilCost}&ps=${psychSafetyVal}&dc=${decisionCostVal}&cf=${crossFuncVal}&sc=${shadowCostVal}&fc=${feedbackCostVal}&avg=${avgPct.toFixed(3)}`;
 
-    // Full report URL with numbers
-    const fullReportLink = 'https://culturaldebtcalculator.com/cultural-debt-vp-summary.html' + params;
+    const fullReportLink = window.location.origin + window.location.pathname.replace('cultural-debt-calculator.html', 'cultural-debt-vp-summary.html') + params;
 
-    // Open VP summary in new tab
+    const sev = avgPct < 0.20 ? 'Managed' : avgPct < 0.35 ? 'Moderate' : avgPct < 0.50 ? 'Severe' : 'Critical';
+
     window.open(fullReportLink, '_blank');
 
-    // Send email via EmailJS
-    const armersLink = 'https://culturaldebtcalculator.com/cultural-debt-armers-brief.html' + params;
     emailjs.send('service_mefsi0n', 'fj6x3a8', {
-      to_email:     email,
-      report_link:  fullReportLink,
-      armers_link:  armersLink,
-      name:         'VP of Engineering'
-    }).then(() => {
-      console.log('Email sent successfully');
-    }).catch((err) => {
-      console.error('Email send failed:', err);
-    });
+      to_email:    email,
+      report_link: fullReportLink,
+      name:        'VP of Engineering'
+    }).then(() => { console.log('Client email sent'); }).catch(err => console.error('Client email failed:', err));
+
+    emailjs.send('service_mefsi0n', 'YOUR_INTERNAL_TEMPLATE_ID', {
+      vp_email:        email,
+      vp_name:         firstName + ' ' + lastName,
+      vp_company:      company,
+      vp_title:        title || 'Not provided',
+      submission_date: new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}),
+      total_cost:      '$' + parseInt(total).toLocaleString('en-US'),
+      severity:        sev,
+      cost_mcg:        '$' + parseInt(incivilCost).toLocaleString('en-US'),
+      cost_psd:        '$' + psychSafetyVal.toLocaleString('en-US'),
+      cost_dvd:        '$' + decisionCostVal.toLocaleString('en-US'),
+      cost_cff:        '$' + crossFuncVal.toLocaleString('en-US'),
+      cost_sm:         '$' + shadowCostVal.toLocaleString('en-US'),
+      cost_bji:        '$' + feedbackCostVal.toLocaleString('en-US'),
+      headcount:       employees,
+      avg_salary:      '$' + parseInt(salary).toLocaleString('en-US'),
+      report_link:     fullReportLink
+    }).then(() => { console.log('Internal alert sent'); }).catch(err => console.error('Internal alert failed:', err));
 
     document.querySelector('.cta-card').innerHTML = `
       <div style="padding: 8px 0;">
-        <p style="
-          color: white;
-          font-size: 20px;
-          font-family: 'Playfair Display', serif;
-          font-weight: 600;
-          margin-bottom: 10px;
-        ">Your Summary Is Ready ✓</p>
-        <p style="
-          color: rgba(255,255,255,0.85);
-          font-size: 14px;
-          line-height: 1.7;
-          margin-bottom: 16px;
-          max-width: 380px;
-          margin-left: auto;
-          margin-right: auto;
-        ">
-          Your <strong style="color:white;">Cultural Debt™ Summary</strong> has opened in a new tab.<br>
+        <p style="color:white;font-size:20px;font-family:'Playfair Display',serif;font-weight:600;margin-bottom:10px;">Your Summary Is Ready, ${firstName} ✓</p>
+        <p style="color:rgba(255,255,255,0.85);font-size:14px;line-height:1.7;margin-bottom:16px;max-width:380px;margin-left:auto;margin-right:auto;">
+          Your <strong style="color:white;">Cultural Debt™ Summary</strong> for <strong style="color:white;">${company}</strong> has opened in a new tab.<br>
           A copy is on its way to <strong style="color:white;">${email}</strong>.
         </p>
-        <p style="
-          margin-top: 18px;
-          font-size: 11px;
-          color: rgba(255,255,255,0.6);
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-        ">Culture Shift Consulting Group · cultureshiftconsultinggroup.com</p>
+        <p style="margin-top:18px;font-size:11px;color:rgba(255,255,255,0.6);letter-spacing:0.1em;text-transform:uppercase;">
+          Culture Shift Consulting Group · cultureshiftconsultinggroup.com
+        </p>
       </div>
     `;
   }
 
   function resetCalc() {
     ['employees','salary','tenure','replacePct'].forEach(id => document.getElementById(id).value = '');
-    document.getElementById('incivilityPct').value    = 40;
-    document.getElementById('microtoxPct').value      = 42;
-    document.getElementById('challengerPct').value    = 38;
-    document.getElementById('vagueFeedbackPct').value = 45;
-    document.getElementById('lateFeedbackPct').value  = 54;
-    document.getElementById('shadowPct').value        = 35;
+    document.getElementById('incivilityPct').value = 40;
+    document.getElementById('psychPct').value       = 40;
+    document.getElementById('decisionPct').value    = 38;
+    document.getElementById('crossFuncPct').value   = 42;
+    document.getElementById('shadowPct').value      = 35;
+    document.getElementById('lateFeedbackPct').value = 54;
     [
       ['incivilityVal','40%'],
-      ['microtoxVal','42%'],
-      ['challengerVal','38%'],
-      ['vagueFeedbackVal','45%'],
-      ['lateFeeedbackVal','54%'],
-      ['shadowVal','35%']
-    ].forEach(([id,v]) => document.getElementById(id).textContent = v);
+      ['psychVal','40%'],
+      ['decisionVal','38%'],
+      ['crossFuncVal','42%'],
+      ['shadowVal','35%'],
+      ['lateFeeedbackVal','54%']
+    ].forEach(([id,v]) => document.getElementById(id) && (document.getElementById(id).textContent = v));
     document.querySelectorAll('.team-btn').forEach(b => b.classList.remove('selected'));
     goTo(1);
   }
